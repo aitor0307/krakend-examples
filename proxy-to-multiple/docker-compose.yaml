@@ -1,0 +1,17 @@
+services:
+  krakend:
+    image: devopsfaith/krakend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./krakend.json:/etc/krakend/krakend.json
+  weba:
+    build: serv1
+    command: node app.js
+    ports:
+      - "3000:4000"
+  webb:
+    build: serv2
+    command: node app.js
+    ports:
+      - "3001:4001"

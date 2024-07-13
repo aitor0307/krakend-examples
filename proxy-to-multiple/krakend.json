@@ -1,0 +1,56 @@
+{
+    "version": 3,
+    "endpoints": [
+      {
+        "endpoint": "/",
+        "method": "GET",
+        "input_query_strings": [
+          "hub.mode",
+          "hub.verify_token",
+          "hub.challenge"
+        ],
+        "backend": [
+          {
+            "url_pattern": "/",
+            "method": "GET",
+            "encoding": "no-op" ,
+            "host": ["weba:4000"]
+          },
+          {
+            "url_pattern": "/",
+            "method": "GET",
+            "host": ["webb:4001"],
+            "extra_config": {
+                "proxy": {
+                    "shadow": true
+                }
+            }
+          }
+        ]
+      },
+      {
+        "endpoint": "/",
+        "method": "POST",
+        "output_encoding": "json" ,
+        "backend": [
+          {
+            "url_pattern": "/",
+            "method": "POST",
+            "encoding": "json" ,
+            "host": ["weba:4000"]
+          },
+          {
+              "url_pattern": "/",
+              "method": "POST",
+              "encoding": "json" ,
+              "host": ["webb:4001"],
+              "extra_config": {
+                  "proxy": {
+                      "shadow": true
+                  }
+              }
+          }
+        ]
+      }
+    ]
+  }

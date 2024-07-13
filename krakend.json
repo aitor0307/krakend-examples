@@ -1,0 +1,53 @@
+{
+    "version": 3,
+    "endpoints": [
+      {
+        "endpoint": "/whatsapp",
+        "method": "GET",
+        "output_encoding": "string" ,
+        "backend": [
+          {
+            "url_pattern": "/",
+            "method": "GET",
+            "encoding": "string" ,
+            "host": ["https://cvasr8-ip-85-87-103-228.tunnelmole.net"]
+          },
+          {
+              "url_pattern": "/",
+              "method": "GET",
+              "encoding": "string" ,
+              "host": ["http://www.google.es"],
+              "extra_config": {
+                  "proxy": {
+                      "shadow": true
+                  }
+              }
+          }
+        ]
+      },
+      {
+        "endpoint": "/whatsapp",
+        "method": "POST",
+        "output_encoding": "json" ,
+        "backend": [
+          {
+            "url_pattern": "/",
+            "method": "POST",
+            "encoding": "json" ,
+            "host": ["https://47.61.62.197:4001"]
+          },
+          {
+              "url_pattern": "/",
+              "method": "POST",
+              "encoding": "json" ,
+              "host": ["http://47.61.62.197:4000"],
+              "extra_config": {
+                  "proxy": {
+                      "shadow": true
+                  }
+              }
+          }
+        ]
+      }
+    ]
+  }
